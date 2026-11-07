@@ -12,7 +12,6 @@ import Foundation
 struct MemoryGame {
     
     private(set) var cards: Array<Card>
-    private(set) var numberOfPairs: Int
     private(set) var firstCardIndex: Int?
         
     struct Card: Identifiable {
@@ -77,7 +76,6 @@ struct MemoryGame {
     
     init(numberOfPairsOfCards: Int, contentFactory: (Int) -> String) {
         cards = []
-        numberOfPairs = numberOfPairsOfCards
         
         for index in 0..<numberOfPairsOfCards {
             let content = contentFactory(index)
