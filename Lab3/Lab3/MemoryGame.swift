@@ -13,6 +13,7 @@ struct MemoryGame {
     
     private(set) var cards: Array<Card>
     private(set) var numberOfPairs: Int
+    private(set) var firstCardIndex: Int?
         
     struct Card: Identifiable {
         var content: String
@@ -22,11 +23,32 @@ struct MemoryGame {
     }
     
     mutating func chooseCard(_ card: Card) {
+        var chosenIndex = 0
         for index in cards.indices {
             if cards[index].id == card.id {
-                cards[index].isFaceUp.toggle()
+                chosenIndex = index
             }
         }
+
+        if cards[chosenIndex].isFaceUp || cards[chosenIndex].isMatched {
+            return
+        }
+
+        if let firstIndex = firstCardIndex {
+            if cards[chosenIndex].content == cards[firstIndex].content {
+                cards[chosenIndex].isMatched = true
+                cards[firstIndex].isMatched = true
+            }
+            firstCardIndex = nil
+        } else {
+            for index in cards.indices {
+                if !cards[index].isMatched {
+                    cards[index].isFaceUp = false
+                }
+            }
+            firstCardIndex = chosenIndex
+        }
+        cards[chosenIndex].isFaceUp = true
     }
     
     init(numberOfPairsOfCards: Int, contentFactory: (Int) -> String) {
