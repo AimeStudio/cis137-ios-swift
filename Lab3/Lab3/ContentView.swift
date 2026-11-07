@@ -1,24 +1,69 @@
 //
 //  ContentView.swift
-//  Lab3
 //
-//  Created by Aimee Jin on 11/6/26.
+//  Lab3
+//  Aimee Jin
+//  11/6/26
 //
 
 import SwiftUI
 
 struct ContentView: View {
+    @ObservedObject var viewModel: EmojiMemoryGame
+
+    let columns = [
+        GridItem(.flexible()),
+        GridItem(.flexible()),
+        GridItem(.flexible())
+    ]
+
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        ScrollView {
+            Text("Memory Game")
+                .font(.largeTitle)
+                .foregroundStyle(.blue)
+                .bold()
+
+            LazyVGrid(columns: columns, spacing: 8) {
+                ForEach(viewModel.cards) { card in
+                    EmojiCard(card: card)
+                        .aspectRatio(2/2.7, contentMode: .fit)
+                        .onTapGesture {
+                            withAnimation(.spring(duration: 0.5, bounce: 0.2)) {
+                                viewModel.choose(card)
+                            }
+                        }
+                }
+            }
+            .padding(.horizontal)
         }
-        .padding()
     }
 }
 
+
+struct EmojiCard: View {
+    var card: MemoryGame.Card
+
+    var body: some View {
+        ZStack {
+            let shape = RoundedRectangle(cornerRadius: 8)
+
+            shape
+                .stroke(lineWidth: 3)
+                .foregroundStyle(.blue)
+            Text(card.content)
+                .font(.system(size: 64))
+                .padding()
+
+            shape.fill(.blue)
+                .opacity(card.isFaceUp ? 0 : 1)
+                .animation(.linear(duration: 0.01).delay(0.2), value: card.isFaceUp)
+        }
+        .rotation3DEffect(.degrees(card.isFaceUp ? 0 : 180), axis: (x: 0, y: 1, z: 0))
+    }
+}
+
+
 #Preview {
-    ContentView()
+    ContentView(viewModel: EmojiMemoryGame())
 }

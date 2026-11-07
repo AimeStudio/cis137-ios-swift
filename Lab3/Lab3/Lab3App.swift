@@ -1,8 +1,9 @@
 //
 //  Lab3App.swift
-//  Lab3
 //
-//  Created by Aimee Jin on 11/6/26.
+//  Lab3
+//  Aimee Jin
+//  11/6/26
 //
 
 import SwiftUI
@@ -11,7 +12,7 @@ import SwiftUI
 struct Lab3App: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(viewModel: EmojiMemoryGame())
         }
     }
 }

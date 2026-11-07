@@ -1,18 +1,33 @@
 //
 //  EmojiMemoryGame.swift
-//  Lab3
 //
-//  Created by Aimee Jin on 11/6/26.
+//  Lab3
+//  Aimee Jin
+//  11/6/26
 //
 
 import SwiftUI
+import Combine
 
-struct EmojiMemoryGame: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+class EmojiMemoryGame: ObservableObject {
+    
+    @Published private var model: MemoryGame = createMemoryGame()
+    
+    static func createMemoryGame() -> MemoryGame {
+        return MemoryGame(numberOfPairsOfCards: 6, contentFactory: makeContent)
+    }
+    
+    static func makeContent(index: Int) -> String {
+        let emojis = ["🐵", "🦊", "🐼", "🦁", "🐷", "🐰"]
+        return emojis[index]
+    }
+    
+    var cards: [MemoryGame.Card] {
+        model.cards
+    }
+    
+    func choose(_ card: MemoryGame.Card) {
+        model.chooseCard(card)
     }
 }
 
-#Preview {
-    EmojiMemoryGame()
-}
