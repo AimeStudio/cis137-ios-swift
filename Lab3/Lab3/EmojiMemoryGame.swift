@@ -28,6 +28,15 @@ class EmojiMemoryGame: ObservableObject {
     
     func choose(_ card: MemoryGame.Card) {
         model.chooseCard(card)
+        
+        if model.hasMismatch {
+            Task {
+                try? await Task.sleep(for: .seconds(0.8))
+                withAnimation(.spring(duration: 0.5, bounce: 0.2)) {
+                    model.flipBackMismatch()
+                }
+            }
+        }
     }
 }
 

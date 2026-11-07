@@ -51,6 +51,30 @@ struct MemoryGame {
         cards[chosenIndex].isFaceUp = true
     }
     
+    
+    var hasMismatch: Bool {
+        var faceUpCount = 0
+        for card in cards {
+            if card.isFaceUp && !card.isMatched {
+                faceUpCount += 1
+            }
+        }
+        return faceUpCount == 2
+    }
+
+    mutating func flipBackMismatch() {
+        if !hasMismatch {
+            return
+        }
+        for index in cards.indices {
+            if !cards[index].isMatched {
+                cards[index].isFaceUp = false
+            }
+        }
+        firstCardIndex = nil
+    }
+    
+    
     init(numberOfPairsOfCards: Int, contentFactory: (Int) -> String) {
         cards = []
         numberOfPairs = numberOfPairsOfCards
