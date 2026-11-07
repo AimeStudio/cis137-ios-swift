@@ -14,9 +14,9 @@ https://github.com/user-attachments/assets/7d549a39-90cf-4291-b3c1-af91860740e3
 
 #### Three Core Layers
 
-- **Model (**MemoryGame.swift**)** holds the card data and game rules. It builds the pairs, shuffles the deck, flips cards, and checks for matches.
-- **ViewModel (**EmojiMemoryGame.swift**)** connects the model to the view. It picks the emojis, gives the view the list of cards, and passes taps to the model.
-- **View (**ContentView.swift**)** draws the card grid and sends taps to the view model. It redraws automatically when the model changes.
+- Model (MemoryGame.swift) holds the card data and game rules. It builds the pairs, shuffles the deck, flips cards, and checks for matches.
+- ViewModel (EmojiMemoryGame.swift) connects the model to the view. It picks the emojis, gives the view the list of cards, and passes taps to the model.
+- View (ContentView.swift) draws the card grid and sends taps to the view model. It redraws automatically when the model changes.
 
 #### Two Animations
 
