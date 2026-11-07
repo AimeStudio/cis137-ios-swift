@@ -6,7 +6,7 @@ An iOS memory card game built with SwiftUI using the MVVM architecture. The game
 
 #### Demo
 
-https://github.com/user-attachments/assets/461d3272-3e2a-4c74-885e-f5517823c0fe
+https://github.com/user-attachments/assets/7d549a39-90cf-4291-b3c1-af91860740e3
 
 #### Video Presentation
 
