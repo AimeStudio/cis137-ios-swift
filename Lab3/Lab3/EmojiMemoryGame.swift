@@ -9,8 +9,10 @@
 import SwiftUI
 import Combine
 
+// ViewModel connects the model to the view
 class EmojiMemoryGame: ObservableObject {
     
+    // Published makes the view redraw when the model changes
     @Published private var model: MemoryGame = createMemoryGame()
     
     static func createMemoryGame() -> MemoryGame {
@@ -26,9 +28,11 @@ class EmojiMemoryGame: ObservableObject {
         model.cards
     }
     
+    // Intent the view calls when the user taps a card
     func choose(_ card: MemoryGame.Card) {
         model.chooseCard(card)
         
+        // If the cards don't match, wait 0.8 seconds and flip them back
         if model.hasMismatch {
             Task {
                 try? await Task.sleep(for: .seconds(0.8))

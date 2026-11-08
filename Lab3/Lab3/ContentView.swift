@@ -8,6 +8,7 @@
 
 import SwiftUI
 
+// View draws the cards and sends taps to the view model
 struct ContentView: View {
     @ObservedObject var viewModel: EmojiMemoryGame
 
@@ -29,6 +30,7 @@ struct ContentView: View {
                     EmojiCard(card: card)
                         .aspectRatio(2/2.7, contentMode: .fit)
                         .onTapGesture {
+                            // Explicit animation that flips the card with a small bounce
                             withAnimation(.spring(duration: 0.5, bounce: 0.2)) {
                                 viewModel.choose(card)
                             }
@@ -56,8 +58,10 @@ struct EmojiCard: View {
 
             shape.fill(.blue)
                 .opacity(card.isFaceUp ? 0 : 1)
+                // Delay hiding the cover so emoji is not revealed before the card turns
                 .animation(.linear(duration: 0.01).delay(0.2), value: card.isFaceUp)
         }
+        // Rotate the card on the Y axis to flip it
         .rotation3DEffect(.degrees(card.isFaceUp ? 0 : 180), axis: (x: 0, y: 1, z: 0))
     }
 }
