@@ -10,7 +10,7 @@ https://github.com/user-attachments/assets/7d549a39-90cf-4291-b3c1-af91860740e3
 
 ### Video Presentation
 
-Watch code walkthrough on [YouTube ↗](https://youtu.be/50nek0hL2Ds)
+Watch code walkthrough on <a href="https://youtu.be/50nek0hL2Ds" target="_blank">YouTube ↗</a>
 
 ### Three Core Layers
 
