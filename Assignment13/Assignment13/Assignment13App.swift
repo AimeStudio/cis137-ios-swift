@@ -1,5 +1,5 @@
 //
-//  Lab3App.swift
+//  Assignment13App.swift
 //
 //  Assignment 13
 //  Aimee Jin
@@ -9,7 +9,7 @@
 import SwiftUI
 
 @main
-struct Lab3App: App {
+struct Assignment13App: App {
     var body: some Scene {
         WindowGroup {
             ContentView(viewModel: EmojiMemoryGame())
