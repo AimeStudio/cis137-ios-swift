@@ -1,24 +1,21 @@
-# Lab 3: Memory Game
+# Assignment 13: Memory Game + ProgressView
 
-#### About
+### About
 
 An iOS memory card game built with SwiftUI using the MVVM architecture. The game deals 12 shuffled cards with 6 pairs of animal emojis, face down. Tapping a card flips it over with a 3D flip animation. When two cards match, they stay face up. If they don’t match, they flip back after a short delay.
 
-#### Demo
+This assignment extends Lab 3 by adding a progress bar at the top that shows how close the player is to finishing the game. 
 
-https://github.com/user-attachments/assets/7d549a39-90cf-4291-b3c1-af91860740e3
+### Demo
 
-#### Video Presentation
+[demo link]
 
-[Video link coming soon]
+### The Progress Bar
 
-#### Three Core Layers
+- Model (MemoryGame.swift) keeps track of progress with a new variable (matchedPairs). It starts at 0 and goes up by 1 each time two cards match.
+- ViewModel (EmojiMemoryGame.swift) gives the view access to that value through two accessors. matchedPairs passes along the model's count, and totalPairs calculates the number of pairs from the cards.
+- View (ContentView.swift) displays the progress bar, filling it based on the matched pairs and total pairs from the view model.
 
-- Model (MemoryGame.swift) holds the card data and game rules. It builds the pairs, shuffles the deck, flips cards, and checks for matches.
-- ViewModel (EmojiMemoryGame.swift) connects the model to the view. It picks the emojis, gives the view the list of cards, and passes taps to the model.
-- View (ContentView.swift) draws the card grid and sends taps to the view model. It redraws automatically when the model changes.
+---
 
-#### Two Animations
-
-- An explicit animation and rotation3DEffect around the vertical axis to flip the card.
-- A delayed animation so the emoji is not revealed before the card turns over.
+View more in [Lab 3](https://github.com/AimeStudio/cis137-ios-swift/tree/main/Lab3)

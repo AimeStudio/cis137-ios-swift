@@ -14,6 +14,8 @@ struct MemoryGame {
     private(set) var cards: Array<Card>
     // Remembers the first card flipped this turn, or nil if none
     private(set) var firstCardIndex: Int?
+    // Number of pairs matched
+    private(set) var matchedPairs: Int = 0
         
     struct Card: Identifiable {
         var content: String
@@ -39,6 +41,7 @@ struct MemoryGame {
             if cards[chosenIndex].content == cards[firstIndex].content {
                 cards[chosenIndex].isMatched = true
                 cards[firstIndex].isMatched = true
+                matchedPairs += 1
             }
             firstCardIndex = nil
         } else {

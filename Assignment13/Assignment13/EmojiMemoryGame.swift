@@ -28,6 +28,16 @@ class EmojiMemoryGame: ObservableObject {
         model.cards
     }
     
+    // Accessor for the number of matched pairs
+    var matchedPairs: Double {
+        Double(model.matchedPairs)
+    }
+    
+    // Total number of card pairs
+    var totalPairs: Double {
+        Double(model.cards.count / 2)
+    }
+    
     // Intent the view calls when the user taps a card
     func choose(_ card: MemoryGame.Card) {
         model.chooseCard(card)
