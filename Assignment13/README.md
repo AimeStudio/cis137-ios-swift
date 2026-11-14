@@ -8,7 +8,7 @@ This assignment extends Lab 3 by adding a progress bar at the top that shows how
 
 ### Demo
 
-[demo link]
+https://github.com/user-attachments/assets/4f47ee82-aff7-427b-b508-42939ff18278
 
 ### The Progress Bar
 
